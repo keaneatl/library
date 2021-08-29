@@ -5,10 +5,44 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Library</title>
-    <link rel="shorcut icon" type="image/jpg" href="">
+    <link rel="shorcut icon" type="image/jpg" href="images/book-svgrepo-com.svg">
     <script src="main.js" defer></script>
 </head>
 <body>
-    
+    <header>
+        Library App by Keane Andre
+    </header>
+
+    <div id="add-book">
+        <form>
+            <label for="book-title">Title</label>
+            <input type="text" id="book-title" required>
+
+            <label for="book-author">Author</label>
+            <input type="text" id="book-author" required>
+
+            <label for="book-pages">Total no. of Pages</label>
+            <input type="number" id="book-pages" min="1">
+
+            <p>Book status</p>
+            <label for="read">Read</label>
+            <input type="radio" id="read" value="read" name="book-status">
+            <label for="not-read">To be read</label>
+            <input type="radio" id="not-read" value="not-read" name="book-status">
+
+            <input type="submit" value="Add">
+        </form>
+    </div>
+
+    <div class="books-container">
+        <div class="book-card">
+        </div>
+    </div>
+
+
+    <footer>
+        
+    </footer>
+
 </body>
 </html>

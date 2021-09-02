@@ -1,0 +1,89 @@
+/* variables */
+:root{
+    --headings: #353231;
+    --primary: #f76f6f;
+    --secondary: #e62424;
+    --tertiary: #5B0A0C;
+}
+
+/* base styles */
+html {
+    font-size: 16px;
+}
+
+.add-book{
+
+}
+
+/* fonts */
+@font-face {
+    font-family: Roboto;
+    src: url(../fonts/Roboto-Regular.ttf);
+}
+
+@font-face {
+    font-family: Roboto-Bold;
+    src: url(../fonts/Roboto-Bold.ttf);
+    font-weight: bold;
+}
+
+.header-container{
+    font-family: Roboto-Bold;
+}
+
+.main-header{
+    font-size: 2rem;
+}
+
+/* mobile styles */
+.main-container{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.header-container{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
+    height: 5.7rem;
+    width: 100%;
+}
+
+.add-book{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.books-container{
+    height: 25rem;
+    width: 90%;
+    margin: 2rem 0.5rem;
+}
+
+.add-book-button{
+    position: sticky;
+    bottom: 1rem;
+    align-self: flex-end;
+    margin: 0 1rem 2rem 0;
+}
+
+
+/* small tablet styles */
+@media screen and (min-width: 620px){
+
+}
+
+
+/* large tablet styles */
+@media screen and (min-width: 960px){
+
+}
+
+/* desktop styles */
+@media screen and (min-width: 1200px){
+
+}
+

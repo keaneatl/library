@@ -1,9 +1,7 @@
 /* variables */
 :root{
-    --headings: #353231;
-    --primary: #f76f6f;
-    --secondary: #e62424;
-    --tertiary: #5B0A0C;
+    --primary: #60efbc;
+    --secondary: #58d5c9;
 }
 
 /* base styles */
@@ -29,14 +27,26 @@ html {
 
 .header-container{
     font-family: Roboto-Bold;
+    background-color: white;
+
 }
 
 .main-header{
     font-size: 2rem;
 }
 
+.footer{
+    font-family: Roboto-Bold;
+    color: #58d5c9;
+}
+
 /* mobile styles */
 .main-container{
+    height: 100%;
+    width: 100%;
+    background-image: url(../images/mainbg.jpg);
+    background-size: 100%;
+    background-position: 50%;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -51,6 +61,19 @@ html {
     width: 100%;
 }
 
+.sign-in{
+    display: none;
+}
+
+.hambg{
+    height: 2rem;
+    cursor: pointer;
+}
+
+#add-book-container{
+    display: none;
+}
+
 .add-book{
     display: flex;
     flex-direction: column;
@@ -58,18 +81,64 @@ html {
 }
 
 .books-container{
-    height: 25rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: white;
+    border-radius: 10px;
+    height: 100%;
     width: 90%;
-    margin: 2rem 0.5rem;
+    margin: 2rem 0 0 0;
+}
+
+.book-card{ 
+    background: radial-gradient(#60efbc, #58d5c9);
+    margin: 1.2rem 0;
+    padding: 20px;
+    width: 10.5rem;
+    min-height: 12.5rem;
+    border-radius: 10px;
+    box-shadow: 0px 6px 10px rgba(0, 0, 0, 0.25);
+    transition: all 0.2s;
+}
+
+.book-card:hover{
+  box-shadow: 0px 6px 10px rgba(0, 0, 0, 0.4);
+  transform: scale(1.01);
+}
+
+.book{
+    margin: 1.6rem;
+    line-height: 1.3;
+    color: white;
 }
 
 .add-book-button{
+    width: 90%;
+    bottom: 0;
+    margin: auto 0;
     position: sticky;
-    bottom: 1rem;
-    align-self: flex-end;
-    margin: 0 1rem 2rem 0;
+    background: radial-gradient(#65edbd, #58d5c9);
+    border: 0;
+    border-radius: 10px 10px 0 0;
+    color: white;
+    padding-top: 0.6rem;
+    cursor: pointer;
 }
 
+.add-ico{
+    height: 1.2rem;
+}
+
+.footer{
+    background-color: white;
+    width: 16rem;
+    height: 1.5rem;
+    border-radius: 5px;
+    text-align: center;
+    margin: 0.8rem;
+    padding-top: 0.5rem;
+}
 
 /* small tablet styles */
 @media screen and (min-width: 620px){

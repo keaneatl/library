@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Library</title>
     <link rel="shorcut icon" type="image/jpg" href="images/book-svgrepo-com.svg">
-    <script src="main.js" defer></script>
+    <script src="scripts/main.js" defer></script>
     <link rel="stylesheet" href="styles/main.css">
     <link rel="stylesheet" href="styles/reset.css">
 </head>
@@ -31,15 +31,21 @@
 
             <p>Book status</p>
             <label for="read">Read</label>
-            <input type="radio" id="read" value="read" name="book-status">
+            <input type="radio" id="status-1" value="Read" name="book-status">
             <label for="not-read">Plan to Read</label>
-            <input type="radio" id="not-read" value="not-read" name="book-status">
+            <input type="radio" id="status-2" value="Plan to Read" name="book-status">
 
-            <input type="submit" value="Add">
+            <button type="button" id="submit-book">Add</button>
         </form>
+        
     </div>
 
     <div class="books-container">
+
+        <div class="book-card">
+            <img src="images/close.svg" class="delete-book">
+            <p class="book">Harry Potter and the Philosopher's Stone by J.K. Rowling, 223 pages, Planning to Read</p>
+        </div>
 
         <div class="book-card">
             <p class="book">Harry Potter and the Philosopher's Stone by J.K. Rowling, 223 pages, Planning to Read</p>
@@ -60,7 +66,7 @@
     </footer>
 
     <button class="add-book-button">
-        <span class="add-icon"></span><img src="images/plus.png" class="add-ico">
+        <img src="images/plus.png" class="add-ico"><span class="add-book-txt">Add a book</span>
     </button>
 </div>
 

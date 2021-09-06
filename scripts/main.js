@@ -1,4 +1,7 @@
 const myLibrary = [];
+const sampleBook = document.querySelector('#sample-book');
+const markSampleRead = document.querySelector('.mark-read');
+const deleteSampleBook = document.querySelector('.delete-book');
 const mainContainer = document.querySelector('.main-container');
 const bookTitle = document.querySelector('#book-title');
 const bookAuthor = document.querySelector('#book-author');
@@ -14,6 +17,14 @@ const closeHamBurger = document.querySelector('.close-hambg');
 let bookStatus = document.querySelector("input[name=book-status]:checked");
 // WORK ON MAKING THE FORM POP UP AFTER CLICKING A BUTTON,
 //  AND localStorage, webStorage
+
+markSampleRead.addEventListener('click', () => {
+    sampleBook.classList.toggle('book-card');
+    sampleBook.classList.toggle('mark-sample-read');
+})
+deleteSampleBook.addEventListener('click', () => {
+    sampleBook.remove();
+})
 
 submitBook.addEventListener('click', addBookToLib);
 submitBook.addEventListener('click', displayBook);

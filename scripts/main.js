@@ -4,6 +4,7 @@ const bookAuthor = document.querySelector('#book-author');
 const bookPages = document.querySelector('#book-pages');
 const submitBook = document.querySelector('#submit-book');
 const booksContainer = document.querySelector('.books-container');
+
 let bookStatus = document.querySelector("input[name=book-status]:checked");
 let newBook;
 
@@ -15,10 +16,6 @@ let newBook;
 
 submitBook.addEventListener('click', addBookToLib);
 submitBook.addEventListener('click', displayBook);
-
-// if (document.querySelector('#status-1').checked){
-//     bookStatus.value = document.querySelector('#status-1').value;
-// }
 
 function Book(title, author, pages, status){
     this.title = title;
@@ -41,25 +38,37 @@ function addBookToLib(){
     bookPages.value = "";
 }
 
-
-
 function displayBook(){
+    let bookIndex = document.querySelectorAll('[data-index]');
+    let bookIndexArr = Array.from(bookIndex);
+    
     myLibrary.forEach(book => {
-        const newBookCard = document.createElement('div');
-        const newBookDesc = document.createElement('p');
-        const deleteNewBook = document.createElement('img');
-        const newBookInfo = book.info();
-        deleteNewBook.setAttribute('src', 'images/close.svg');
-        deleteNewBook.classList.add('delete-book');
-        newBookCard.setAttribute('data-index', `${myLibrary.indexOf(book)}`);
-        newBookDesc.textContent = `${newBookInfo}`;
-        newBookDesc.classList.add('book');
-        newBookCard.classList.add('book-card');
-        newBookCard.append(deleteNewBook);
-        newBookCard.append(newBookDesc);
-        booksContainer.append(newBookCard);
+        if (bookIndexArr[myLibrary.indexOf(book)] === undefined || !bookIndexArr[myLibrary.indexOf(book)].hasAttribute('data-index')){
+            const newBookCard = document.createElement('div');
+            const newBookDesc = document.createElement('p');
+            const deleteNewBook = document.createElement('img');
+            const newBookInfo = book.info();
+            deleteNewBook.setAttribute('src', 'images/cardclose.png');
+            deleteNewBook.classList.add('delete-book');
+            deleteNewBook.addEventListener('click', () => {
+                myLibrary.splice(myLibrary.indexOf(book), 1);
+                newBookCard.remove()
+            })
+            newBookCard.classList.add('book-card');
+            newBookCard.setAttribute('data-index', `${myLibrary.indexOf(book)}`);
+            newBookDesc.textContent = `${newBookInfo}`;
+            newBookDesc.classList.add('book');
+    
+            newBookCard.append(deleteNewBook);
+            newBookCard.append(newBookDesc);
+            booksContainer.append(newBookCard);
+        }
+        else if (bookIndexArr[myLibrary.indexOf(book)].hasAttribute('data-index'))return
     })
 }
+
+
+
 
 const theHobbit = new Book('The Hobbit', 'J.R.R. Tolkien', '295 pages', 'not read yet');
 

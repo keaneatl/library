@@ -1,21 +1,45 @@
 const myLibrary = [];
+const mainContainer = document.querySelector('.main-container');
 const bookTitle = document.querySelector('#book-title');
 const bookAuthor = document.querySelector('#book-author');
 const bookPages = document.querySelector('#book-pages');
 const submitBook = document.querySelector('#submit-book');
 const booksContainer = document.querySelector('.books-container');
-
+const addBookContainer = document.querySelector('#add-book-container');
+const addBookButton = document.querySelector('.add-book-button');
+const closeForm = document.querySelector('.close-form')
+const hamBurger = document.querySelector('.hambg');
+const hamBurgerMenu = document.querySelector('#hambgmenu');
+const closeHamBurger = document.querySelector('.close-hambg');
 let bookStatus = document.querySelector("input[name=book-status]:checked");
-let newBook;
-
-// WORK ON DELETING A BOOK, MAKING THE FORM POP UP AFTER CLICKING A BUTTON,
-//  AND TOGGLE IT BEING READ/UNREAD
-// newBook.prototype.toggleRead = function(){
-
-// }
+// WORK ON MAKING THE FORM POP UP AFTER CLICKING A BUTTON,
+//  AND localStorage, webStorage
 
 submitBook.addEventListener('click', addBookToLib);
 submitBook.addEventListener('click', displayBook);
+submitBook.addEventListener('click', () => {
+    addBookContainer.removeAttribute('style');
+    addBookButton.removeAttribute('style');
+})
+addBookButton.addEventListener('click', () => {
+    addBookContainer.setAttribute('style', 'display: flex;');
+    addBookButton.setAttribute('style', 'display: none;');
+    // mainContainer.setAttribute('style', 'opacity')
+})
+closeForm.addEventListener('click', () => {
+    addBookContainer.removeAttribute('style');
+    addBookButton.removeAttribute('style');
+})
+
+hamBurger.addEventListener('click', () => {
+    mainContainer.setAttribute('style', 'display: none;');
+    hamBurgerMenu.setAttribute('style', 'display: flex;');
+})
+
+closeHamBurger.addEventListener('click', () => {
+    mainContainer.removeAttribute('style');
+    hamBurgerMenu.removeAttribute('style');
+})
 
 function Book(title, author, pages, status){
     this.title = title;
@@ -24,7 +48,7 @@ function Book(title, author, pages, status){
     this.status = status;
 
     this.info = function(){
-        return title + ' by ' + author + ', ' + pages + ', ' + status
+        return title + ' by ' + author + ', ' + pages + ' pages.';
     }
 }
 
@@ -43,9 +67,11 @@ function displayBook(){
     let bookIndexArr = Array.from(bookIndex);
     
     myLibrary.forEach(book => {
-        if (bookIndexArr[myLibrary.indexOf(book)] === undefined || !bookIndexArr[myLibrary.indexOf(book)].hasAttribute('data-index')){
+        if (bookIndexArr[myLibrary.indexOf(book)] === undefined || 
+        !bookIndexArr[myLibrary.indexOf(book)].hasAttribute('data-index')){
             const newBookCard = document.createElement('div');
             const newBookDesc = document.createElement('p');
+            const markBookRead = document.createElement('p');
             const deleteNewBook = document.createElement('img');
             const newBookInfo = book.info();
             deleteNewBook.setAttribute('src', 'images/cardclose.png');
@@ -58,9 +84,16 @@ function displayBook(){
             newBookCard.setAttribute('data-index', `${myLibrary.indexOf(book)}`);
             newBookDesc.textContent = `${newBookInfo}`;
             newBookDesc.classList.add('book');
+            markBookRead.textContent = 'Mark as read';
+            markBookRead.classList.add('mark-read');
+            markBookRead.addEventListener('click', () => {
+                newBookCard.classList.toggle('mark-read-bg');
+                book.status === 'Read' ? book.status = 'Planning to Read' : book.status = 'Read';
+            })
     
             newBookCard.append(deleteNewBook);
             newBookCard.append(newBookDesc);
+            newBookCard.append(markBookRead);
             booksContainer.append(newBookCard);
         }
         else if (bookIndexArr[myLibrary.indexOf(book)].hasAttribute('data-index'))return

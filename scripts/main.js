@@ -98,6 +98,7 @@ function displayBook(){
             markBookRead.textContent = 'Mark as read';
             markBookRead.classList.add('mark-read');
             markBookRead.addEventListener('click', () => {
+                newBookCard.classList.toggle('book-card');
                 newBookCard.classList.toggle('mark-read-bg');
                 book.status === 'Read' ? book.status = 'Planning to Read' : book.status = 'Read';
             })

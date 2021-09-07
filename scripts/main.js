@@ -1,4 +1,4 @@
-const myLibrary = [];
+let myLibrary = [];
 const sampleBook = document.querySelector('#sample-book');
 const markSampleRead = document.querySelector('.mark-read');
 const deleteSampleBook = document.querySelector('.delete-book');
@@ -15,8 +15,7 @@ const hamBurger = document.querySelector('.hambg');
 const hamBurgerMenu = document.querySelector('#hambgmenu');
 const closeHamBurger = document.querySelector('.close-hambg');
 let bookStatus = document.querySelector("input[name=book-status]:checked");
-// WORK ON MAKING THE FORM POP UP AFTER CLICKING A BUTTON,
-//  AND localStorage, webStorage
+let storedBooks;
 
 markSampleRead.addEventListener('click', () => {
     sampleBook.classList.toggle('book-card');
@@ -35,7 +34,6 @@ submitBook.addEventListener('click', () => {
 addBookButton.addEventListener('click', () => {
     addBookContainer.setAttribute('style', 'display: flex;');
     addBookButton.setAttribute('style', 'display: none;');
-    // mainContainer.setAttribute('style', 'opacity')
 })
 closeForm.addEventListener('click', () => {
     addBookContainer.removeAttribute('style');
@@ -59,7 +57,7 @@ function Book(title, author, pages, status){
     this.status = status;
 
     this.info = function(){
-        return title + ' by ' + author + ', ' + pages + ' pages.';
+        return this.title + ' by ' + this.author + ', ' + this.pages + ' pages.';
     }
 }
 
@@ -71,6 +69,7 @@ function addBookToLib(){
     bookTitle.value = "";
     bookAuthor.value = "";
     bookPages.value = "";
+    localStorage.setItem('currentLibrary', JSON.stringify(myLibrary));
 }
 
 function displayBook(){
@@ -90,7 +89,9 @@ function displayBook(){
             deleteNewBook.addEventListener('click', () => {
                 myLibrary.splice(myLibrary.indexOf(book), 1);
                 newBookCard.remove()
+                localStorage.setItem('currentLibrary', JSON.stringify(myLibrary));
             })
+
             newBookCard.classList.add('book-card');
             newBookCard.setAttribute('data-index', `${myLibrary.indexOf(book)}`);
             newBookDesc.textContent = `${newBookInfo}`;
@@ -101,8 +102,13 @@ function displayBook(){
                 newBookCard.classList.toggle('book-card');
                 newBookCard.classList.toggle('mark-read-bg');
                 book.status === 'Read' ? book.status = 'Planning to Read' : book.status = 'Read';
-            })
-    
+                localStorage.setItem('currentLibrary', JSON.stringify(myLibrary));
+            }) 
+            if (book.status === 'Read'){
+                newBookCard.classList.toggle('book-card');
+                newBookCard.classList.toggle('mark-read-bg');
+            }
+
             newBookCard.append(deleteNewBook);
             newBookCard.append(newBookDesc);
             newBookCard.append(markBookRead);
@@ -112,8 +118,27 @@ function displayBook(){
     })
 }
 
+function saveLibrary(){
+    localStorage.setItem('currentLibrary', JSON.stringify(myLibrary));
+    storedBooks = JSON.parse(localStorage.getItem("currentLibrary"));
+}
 
-
-
-const theHobbit = new Book('The Hobbit', 'J.R.R. Tolkien', '295 pages', 'not read yet');
-
+if(!localStorage.getItem('currentLibrary')){
+    saveLibrary();
+    myLibrary = storedBooks;
+    myLibrary.forEach(book =>{
+        book.info = function(){
+            return this.title + ' by ' + this.author + ', ' + this.pages + ' pages.';
+        }
+    })
+}
+else{
+    storedBooks = JSON.parse(localStorage.getItem("currentLibrary"));
+    myLibrary = storedBooks;
+    myLibrary.forEach(book =>{
+        book.info = function(){
+            return this.title + ' by ' + this.author + ', ' + this.pages + ' pages.';
+        }
+    })
+    displayBook();
+}

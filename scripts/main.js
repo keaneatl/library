@@ -20,6 +20,7 @@ let storedBooks;
 markSampleRead.addEventListener('click', () => {
     sampleBook.classList.toggle('book-card');
     sampleBook.classList.toggle('mark-sample-read');
+    localStorage.setItem('currentLibrary', JSON.stringify(myLibrary));
 })
 deleteSampleBook.addEventListener('click', () => {
     sampleBook.remove();

@@ -67,7 +67,7 @@ const library = (() => {
                 deleteNewBook.setAttribute('src', 'images/cardclose.png');
                 deleteNewBook.classList.add('delete-book');
                 deleteNewBook.addEventListener('click', () => {
-                    myLibrary.splice(i);
+                    myLibrary.splice(i, 1);
                     newBookCard.remove()
                     localStorage.setItem('currentLibrary', JSON.stringify(myLibrary));
                 })

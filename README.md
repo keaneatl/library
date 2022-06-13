@@ -3,12 +3,12 @@
   <p align="center">
     <strong>This was the first project/task for the Full-stack JavaScript path for The Odin Project. Its main functions are: to add, remove, mark a book read/unread, and remember all of those changes even if you refresh/re-visit the site. It is also fully responsive.</strong>
      <br /><br />
-    <a href="https://keaneatl.github.io/library/" target="_blank"><strong>Live Preview »</strong></a>
+    <a href="https://library-ochre.vercel.app/" target="_blank"><strong>Live Preview »</strong></a>
     <br /><br />
   </p>
 </p>
 
-<a href="https://keaneatl.github.io/library/" target="_blank"><img src="./dist/images/livepreview.png" alt="Library App Live Preview"></a>
+<a href="https://library-ochre.vercel.app/" target="_blank"><img src="./dist/images/livepreview.png" alt="Library App Live Preview"></a>
 
 <h2 style="display: inline-block">Table of Contents</h2>
 <ol>

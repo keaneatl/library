@@ -215,19 +215,3 @@ function resetNewBookForm() {
   bookAuthor.value = "";
   bookPages.value = "";
 }
-
-// sample book
-// const sampleBook = (() => {
-//   // cache DOM
-//   const sampleBook = document.querySelector("#sample-book");
-//   const markSampleRead = document.querySelector(".mark-read");
-//   const deleteSampleBook = document.querySelector(".delete-book");
-//   // bind events
-//   markSampleRead.addEventListener("click", () => {
-//     sampleBook.classList.toggle("book-card");
-//     sampleBook.classList.toggle("mark-sample-read");
-//   });
-//   deleteSampleBook.addEventListener("click", () => {
-//     sampleBook.remove();
-//   });
-// })();

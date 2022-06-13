@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Library</title>
+    <link
+      rel="shorcut icon"
+      type="image/jpg"
+      href="./images/book-svgrepo-com.svg"
+    />
+    <script src="./index.js" defer></script>
+    <link rel="stylesheet" href="./styles/main.css" />
+    <link rel="stylesheet" href="./styles/reset.css" />
+  </head>
+  <body>
+    <div id="hambgmenu">
+      <img src="./images/close.svg" class="close-hambg-icon" />
+      <h3 class="hambg-login"><a href="">Sign in (Coming Soon!)</a></h3>
+    </div>
+
+    <div class="main-container">
+      <header class="header-container">
+        <h1 class="main-header">Library App</h1>
+        <img src="./images/hamburger-menu-svgrepo-com.svg" class="hambg-icon" />
+        <h3 class="sign-in"><a href="">Sign in (Coming Soon!)</a></h3>
+      </header>
+
+      <div id="add-book-container">
+        <form class="add-book">
+          <img src="./images/close.svg" class="close-form" />
+          <label for="book-title" class="form-item">Title</label>
+          <input type="text" id="book-title" required />
+
+          <label for="book-author" class="form-item">Author</label>
+          <input type="text" id="book-author" required />
+
+          <label for="book-pages" class="form-item">Total no. of Pages</label>
+          <input type="number" id="book-pages" min="1" />
+
+          <label for="read" class="form-item">Read</label>
+          <input type="radio" id="read" value="Read" name="book_status" />
+          <label for="not-read" class="form-item">Plan to Read</label>
+          <input
+            type="radio"
+            id="not-read"
+            value="Plan to Read"
+            name="book_status"
+            checked
+          />
+
+          <button type="button" id="submit-book" class="form-item">Add</button>
+        </form>
+      </div>
+
+      <div class="books-container"></div>
+
+      <footer class="footer">MADE BY KEANE ANDRE</footer>
+
+      <button class="add-book-button">
+        <img src="./images/plus.png" class="add-ico" /><span
+          class="add-book-txt"
+          >Add a book</span
+        >
+      </button>
+    </div>
+  </body>
+</html>

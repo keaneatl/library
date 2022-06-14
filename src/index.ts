@@ -1,3 +1,10 @@
+import "./styles/main.css";
+import "./styles/reset.css";
+import hamburgerIcon from "./images/hamburger-menu-svgrepo-com.svg";
+import closeIcon from "./images/close.svg";
+import plusIcon from "./images/plus.png";
+import deleteCardIcon from "./images/cardclose.png";
+
 class Book {
   title: string;
   author: string;
@@ -42,6 +49,12 @@ const library = (() => {
   const closeForm: HTMLImageElement = document.querySelector(
     ".close-form"
   ) as HTMLImageElement;
+  const addBookIcon: HTMLImageElement = document.querySelector(
+    ".add-ico"
+  ) as HTMLImageElement;
+
+  closeForm.src = closeIcon;
+  addBookIcon.src = plusIcon;
 
   // bind events
   submitBook.addEventListener("click", () => {
@@ -140,7 +153,7 @@ function displayLibrary(myLibrary: Array<Book>) {
     const markBookRead = document.createElement("p");
     const deleteNewBook = document.createElement("img");
     const newBookInfo = book.collectInfo();
-    deleteNewBook.setAttribute("src", "images/cardclose.png");
+    deleteNewBook.src = deleteCardIcon;
     deleteNewBook.classList.add("delete-book");
     deleteNewBook.addEventListener("click", () => {
       myLibrary.splice(i, 1);
@@ -188,6 +201,9 @@ const hamBurgerMenu = (() => {
   const mainContainer: HTMLDivElement = document.querySelector(
     ".main-container"
   ) as HTMLDivElement;
+
+  hamBurgerIcon.src = hamburgerIcon;
+  closeHamBurgerIcon.src = closeIcon;
 
   // bind events
   hamBurgerIcon.addEventListener("click", () => {
